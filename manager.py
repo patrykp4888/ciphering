@@ -1,4 +1,6 @@
 from menu import Menu
+from rot47 import Rot47
+from rot13 import Rot13
 
 class Manager:
     def __init__(self):
