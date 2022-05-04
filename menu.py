@@ -1,28 +1,33 @@
+import encodings
+from buffer import Buffer
+from enums import ROTChooser
+from file_handler import FileHandler, MenuChooser
+
+
 class Menu:
     def __init__(self, *args):
         self.menu_list = args
 
-    def display(self):
+    def display(self) -> None:
         print('-----------------------------------')
-        for nr, option in enumerate(self.menu_list):
+        for nr, option in zip(MenuChooser.__dict__.keys(), self.menu_list):
             print(f"{nr + 1}. {option}")
         print('-----------------------------------')
-        self.get_choice()
 
-    def get_choice(self):
+    def get_choice(self) -> int:
         try:
-            choice = int(input("Your choice: "))
-            return choice
+            self.choice = int(input('Your choice: '))
+            return self.choice
         except ValueError as err:
             print(err)
-        
-    def get_user_input(self):
-        print('Type the text that You want to encrypt: ')
-        
-    def execute(self, menu_list):
-        pass
 
-    def showError(self):
-        print("ERROR!")
+    def choose_encoding(self) -> int:
+        encoding = int(input(f'Type {ROTChooser.ROT47_OPT} for ROT47\n Type {ROTChooser.ROT13_OPT} for ROT13\n'))
+        return encoding
+
+    def get_user_input(self) -> str:
+        user_input = str(input('Type the text that You want to encrypt:' ))
+        return user_input
+
 
 

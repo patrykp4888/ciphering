@@ -1,4 +1,7 @@
-class Rot:
+from abc import ABC
+
+
+class Rot(ABC):
     def __init__(self):
         pass
     
