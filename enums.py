@@ -4,5 +4,9 @@ class ROTChooser:
 
 
 class MenuChooser:
-    opt_1 = 1
-    opt_2 = 2
+    OPT_1 = 1
+    OPT_2 = 2
+    OPT_3 = 3
+    OPT_4 = 4
+    OPT_5 = 5
+

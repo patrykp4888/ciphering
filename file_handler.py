@@ -10,3 +10,6 @@ class FileHandler:
         with open('encoded_texts', 'r') as file:
             data = file.readlines()
         return data
+
+    def create_json(self):
+        pass

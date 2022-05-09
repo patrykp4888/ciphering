@@ -1,18 +1,18 @@
 import encodings
 from buffer import Buffer
-from enums import ROTChooser
-from file_handler import FileHandler, MenuChooser
-
+from enums import ROTChooser, MenuChooser
+from file_handler import FileHandler
 
 class Menu:
     def __init__(self, *args):
         self.menu_list = args
 
     def display(self) -> None:
-        print('-----------------------------------')
-        for nr, option in zip(MenuChooser.__dict__.keys(), self.menu_list):
-            print(f"{nr + 1}. {option}")
-        print('-----------------------------------')
+        print('elo')
+        # print('-----------------------------------')
+        # for nr, option in zip(MenuChooser.__dict__.keys(), self.menu_list): #zip(manager.options.keys(), self.menu_list)
+        #     print(f"{nr + 1}. {option}")
+        # print('-----------------------------------')
 
     def get_choice(self) -> int:
         try:
