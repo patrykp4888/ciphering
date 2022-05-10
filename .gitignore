@@ -1,2 +1,5 @@
 # Python cache
 __pycache__
+
+# JSON
+encoded_tests
