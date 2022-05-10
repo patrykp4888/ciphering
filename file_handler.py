@@ -1,15 +1,15 @@
+import json
+
+
 class FileHandler:
     def __init__(self) -> None:
         pass
 
-    def save_to_file(self, data) -> None:
-        with open('encoded_texts', 'a') as file:
+    def save_to_file(self, data: json) -> None:
+        with open('encoded_texts.json', 'w') as file:
             file.write(data)
 
-    def get_from_file(self) -> str:
-        with open('encoded_texts', 'r') as file:
-            data = file.readlines()
+    def get_from_file(self) -> dict:
+        with open('encoded_texts.json', 'r') as file:
+            data = json.load(file)
         return data
-
-    def create_json(self):
-        pass

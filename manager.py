@@ -3,6 +3,7 @@ from enums import ROTChooser, MenuChooser
 from rot47 import Rot47
 from rot13 import Rot13
 from buffer import Buffer
+from file_handler import FileHandler
 
 class Manager:
     def __init__(self):
@@ -25,6 +26,7 @@ class Manager:
             MenuChooser.OPT_5: self.do_opt_exit
             }
         self.buffer = Buffer()
+        self.file_handler = FileHandler()
         self.is_running = True
 
     def start(self):
@@ -36,17 +38,21 @@ class Manager:
     def do_opt1(self):
         encoding_choice = self.menu.choose_encoding()
         user_input = self.menu.get_user_input()
-        self.rots.get(encoding_choice).encrypt(user_input)
-        self.buffer.add_to_buffer(user_input, encoding_choice)
+        encoded_text = self.rots.get(encoding_choice)().encrypt(user_input)
+        self.buffer.add_to_buffer(encoded_text, encoding_choice)
 
     def do_opt2(self):
-        pass
+        json_object = self.buffer.create_json_from_buffer()
+        self.file_handler.save_to_file(json_object)
 
     def do_opt3(self):
-        pass
+        encoding_choice = str(self.menu.choose_encoding())
+        encoded_data = self.file_handler.get_from_file()
+        for i in encoded_data[encoding_choice]:
+            print(self.rots.get(encoding_choice)().decrypt(i))
 
     def do_opt4(self):
-        pass
+        self.buffer.show_buffer()
 
     def do_opt_exit(self):
         self.is_running = False
