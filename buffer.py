@@ -1,19 +1,21 @@
 from dataclasses import dataclass, field
 from typing import Dict, List
-
-from enums import ROTChooser
 import json
+
+from .enums import ROTChooser
 
 
 @dataclass 
 class Buffer:
-    """Object for data storing"""
+    """Dataclass for encoded data storing as the dict structure"""
     buffer: Dict[str, List[str]] = field(default_factory=lambda: {ROTChooser.ROT47_OPT: [],ROTChooser.ROT13_OPT: []})
 
     def add_to_buffer(self, text, type):
+        """Adds encoded user input to buffer"""
         self.buffer[type].append(text)  
 
     def show_buffer(self):
+        """Prints the data stored in buffer"""
         for key, value in self.buffer.items():
             print(key, value)
 

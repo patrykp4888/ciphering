@@ -2,10 +2,9 @@ import json
 
 
 class FileHandler:
-    def __init__(self) -> None:
-        pass
 
-    def save_to_file(self, data: json) -> None:
+    def save_to_file(self, data: dict) -> None:
+        """Saves json formatted data to file"""
         with open('encoded_texts.json', 'w') as file:
             file.write(data)
 

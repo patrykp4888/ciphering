@@ -1,12 +1,12 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 class Rot(ABC):
-    def __init__(self):
-        pass
     
+    @abstractmethod
     def encrypt(self):
         raise NotImplementedError
 
+    @abstractmethod
     def decrypt(self):
         raise NotImplementedError

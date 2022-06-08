@@ -9,4 +9,3 @@ class MenuChooser:
     OPT_3 = 3
     OPT_4 = 4
     OPT_5 = 5
-

@@ -1,8 +1,8 @@
 import encodings
 from ssl import Options
-from buffer import Buffer
-from enums import ROTChooser, MenuChooser
-from file_handler import FileHandler
+from .buffer import Buffer
+from .enums import ROTChooser, MenuChooser
+from .file_handler import FileHandler
 
 
 class Menu:
@@ -19,12 +19,15 @@ class Menu:
         try:
             self.choice = int(input('Your choice: '))
             return self.choice
-        except ValueError as err:
-            print(err)
+        except:
+            print('Invalid choice, try again!')
 
     def choose_encoding(self) -> int:
-        encoding = int(input(f'Type {ROTChooser.ROT47_OPT} for ROT47\nType {ROTChooser.ROT13_OPT} for ROT13\n'))
-        return encoding
+        try:
+            encoding = int(input(f'Type {ROTChooser.ROT47_OPT} for ROT47\nType {ROTChooser.ROT13_OPT} for ROT13\n')) # TODO
+            return encoding
+        except :
+            print('Invalid choice, try again!')
 
     def get_user_input(self) -> str:
         user_input = str(input('Type in the text that You want to encrypt:\n'))

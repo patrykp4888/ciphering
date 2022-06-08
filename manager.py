@@ -1,9 +1,11 @@
-from menu import Menu
-from enums import ROTChooser, MenuChooser
-from rot47 import Rot47
-from rot13 import Rot13
-from buffer import Buffer
-from file_handler import FileHandler
+from msilib.schema import Error
+from .menu import Menu
+from .enums import ROTChooser, MenuChooser
+from .rot47 import Rot47
+from .rot13 import Rot13
+from .buffer import Buffer
+from .file_handler import FileHandler
+
 
 class Manager:
     def __init__(self):
@@ -46,10 +48,10 @@ class Manager:
         self.file_handler.save_to_file(json_object)
 
     def do_opt3(self):
-        encoding_choice = str(self.menu.choose_encoding())
+        encoding_choice = self.menu.choose_encoding()
         encoded_data = self.file_handler.get_from_file()
-        for i in encoded_data[encoding_choice]:
-            print(self.rots.get(encoding_choice)().decrypt(i))
+        for value in encoded_data[str(encoding_choice)]: # TODO nazwa zmiennej w pętli
+            print(self.rots.get(encoding_choice)().decrypt(value))
 
     def do_opt4(self):
         self.buffer.show_buffer()
@@ -58,6 +60,14 @@ class Manager:
         self.is_running = False
 
     def execute(self, choice):
-        self.options[choice]()
+        try:
+            self.options[choice]() # TODO try except
+        except :
+            print('Invalid choice, try again!')
+
+### 1) Prywatyzacja metod - zrobione
+### 2) rot13 = rot47 - zrobione
+### 3) docstr dla 1 klasy i 3 wybranych metod - zrobione
+### 4) black/prospector - ogarnąć 
 
 
